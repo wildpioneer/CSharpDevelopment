@@ -13,7 +13,17 @@ public class Person
 
     public override string ToString()
     {
-        return $"Name: {Name}, Age: {Age}"
-        ;
+        return $"Name: {Name}, Age: {Age}";
     }
+
+    // Добавить только при работе со сложными объектами
+    public override bool Equals(object? obj)
+    {
+        if (obj is Person person) 
+            return (Name == person.Name) && (Age == person.Age) ;
+        return false;
+    }
+
+    // Показать пример, если не добавить эту перегрузку
+    public override int GetHashCode() => Name.GetHashCode() & Age.GetHashCode();
 }
