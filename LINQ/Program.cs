@@ -1,46 +1,46 @@
-﻿// See https://aka.ms/new-console-template for more information
+namespace LINQ;
 
-using LINQ;
-
-string[] people = { "Tom", "Bob", "Sam", "Tim", "Tomas", "Bill" };
-
-var selectedPeople = from p in people
-    where p.ToUpper().StartsWith("T")
-    orderby p
-    select p;
-
-var selectedPeopleCount = (from p in people
-    where p.ToUpper().StartsWith("T")
-    orderby p
-    select p).Count();
-
-var selectedPeople1 = people.Where(p => p.ToUpper().StartsWith("T")).OrderBy(p => p);
-
-Console.WriteLine(selectedPeopleCount);
-foreach (string person in selectedPeople)
-    Console.WriteLine(person);
-
-foreach (string person in selectedPeople1)
-    Console.WriteLine(person);
-
-DataHelper dataHelper = new DataHelper();
-var selectedData = dataHelper.GetData("Example1.json").Data.Where(p => p.ToUpper().StartsWith("T")).OrderBy(p => p);
-foreach (string item in selectedData)
-    Console.WriteLine(item);
-
-
-var people1 = new List<Person>
+public class Program
 {
-    new Person ("Tom", 23),
-    new Person ("Bob", 27),
-    new Person ("Sam", 29),
-    new Person ("Alice", 24)
-};
- 
-var names = from p in people1 select p.Name;
-var ages = from p in people1 select p.Age;
- 
-foreach (string n in names)
-    Console.WriteLine(n);
-
-record class Person(string Name, int Age);
+    static void Main()
+    {
+        // Testing Task
+        /*
+        TestTask testTask = new TestTask();
+        testTask.Solve();
+        */
+        
+        // Base Sytanx
+        /*
+        new BaseSyntax().RunQuerySyntax();
+        new BaseSyntax().RunMethodSyntax();
+        new BaseSyntax().RunStringExtention();
+        */
+        
+        
+        // Where
+        new Where().RunQuerySyntax();
+        new Where().RunMethodSyntax();
+        
+        // Select
+        /*
+        new Select().RunQuerySyntax();
+        new Select().RunMethodSyntax();
+        */
+        
+        // Два в одном
+        //new TwoInOne().run();
+        
+        // Переменные
+        /*
+        new Variables().RunQuerySyntax();
+        new Variables().RunMethodSyntax();
+        */
+        
+        // Агрегация данных
+        /*
+        new DataAggregation().RunQuerySyntax(); 
+        new DataAggregation().RunMethodSyntax(); 
+        */
+    }
+}
